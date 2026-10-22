@@ -1,0 +1,9 @@
+search_index
+*.o
+*.out
+temp.out
+a.out
+*.zip
+.vscode/
+tests/diff/
+tema2_backup.c

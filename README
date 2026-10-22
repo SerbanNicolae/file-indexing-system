@@ -1,0 +1,146 @@
+Programul incepe in main unde se deschid fisierele de intrare si iesire
+apoi se creeaza si se initializeaza structurile de baza: o lista dublu 
+inlantuita care va tine evidenta tuturor fisierelor si un arbore trie
+care va functiona ca un dictionar pentru cuvinte.
+Apoi se citeste numarul de operatii care vor fi executate si se intra 
+intr un while care se termina cand n ul ajunge la 0.
+
+Operatia ADD:
+Este rezolvata cu ajutorul functiei add_function.
+Aceasta citeste numele fisierului si cauta in lista dublu inlantuita sa vada 
+daca exista deja. Daca exista, da mesajul EXISTS si citeste in gol restul
+datelor de pe linie ca sa nu strice sincronizarea la urmatoarea comanda.
+Daca nu exista, creeaza un nod nou pt fisier, ii citeste scorul, 
+aloca memorie pentru cuv si le citeste pe rand. Cand adauga in trie, 
+face o verificare ca sa nu bage acelasi cuv de mai multe ori in heap ul 
+aceluiasi document
+
+Operatia DEL:
+Primeste numele unui fisier, il cauta in lista, iar daca nu il gaseste 
+afiseaza NOT FOUND. Daca il gaseste, ii ia fiecare cuv pe care il contine, 
+se duce in trie la nodul terminal si sterge doar referinta fisierului din 
+max-heap-ul cuvantului respectiv. Daca heap-ul ramane gol, sterge si cuv
+din trie cu totul. La final scoate fisierul din lista dublu inlantuita si 
+elibereaza memoria.
+
+Operatia ADDKW:
+Cauta fisierul. Daca nu exista da NOT FOUND. Daca exista, verifica daca 
+are deja cuvantul respectiv. Daca nu il are, ii da un realloc la vectorul de 
+cuvinte al fisierului, adauga cuv nou acolo, si il insereaza si in 
+arborele trie actualizand heap-ul nodului terminal.
+
+Operatia DELKW:
+Cauta fisierul si apoi cuv in interiorul lui. Daca gaseste cuvantul, 
+se duce in trie, extrage fisierul din heap ul cuvantului si daca heap ul ramane 
+gol, da un trie_remove. Apoi vine inapoi in structura fisierului, scoate cuvantul 
+din array prin mutarea elementelor, da realloc ca sa micsoreze memoria, iar daca 
+fisierul ramane cu 0 cuvinte in total, il sterge complet si din lista.
+
+Operatia FIND:
+Foloseste functia nod_terminal ca sa ajunga la finalul cuvantului in trie. 
+Daca cuv nu exista sau heap ul lui e gol, afiseaza EMPTY. Daca exista, 
+copiaza pointerii fisierelor din heap intr-un vector temporar, le sorteaza 
+strict alfabetic (fara sa tina cont de scor) cu un bubble sort  si le afiseaza.
+
+Operatia TOPK:
+La fel ca la FIND, cauta cuvantul in trie. Diferenta este ca aici vrem fisierele 
+sortate dupa scor. Ca sa nu stric heap ul original dand pop din el, 
+se creeaza o copie a heap ului. Din aceasta copie se ia radacina (maximul) de k 
+ori, refacandu-se structura dupa fiecare extragere cu functia ajutatoare sift_down.
+
+Operatia PRINT:
+Face o parcurgere recursiva DFS (Depth First Search) in arborele trie. Formeaza 
+cuvantul litera cu litera mergand pe copii. Cand gaseste un nod care e sfarsit de 
+cuv, copiaza fisierele din heap ul lui, le sorteaza alfabetic si le printeaza. 
+Daca a parcurs tot trie ul si variabila "gasit" a ramas 0, inseamna ca dictionarul e 
+gol si afiseaza EMPTY.
+
+La finalul programului:
+Dupa ce bucla se termina, se apeleaza functiile de eliberare (free_trie si free_list) 
+care parcurg si dau free la toata memoria alocata (fisiere, cuvinte, noduri de trie, 
+heap-uri).
+
+Build succeeded. +5 pts
+README found (./README.md) - +5 pts
+test01 (1.25 pts) - PASSED
+test02 (1.25 pts) - PASSED
+test03 (1.25 pts) - PASSED
+test04 (1.25 pts) - PASSED
+test05 (1.25 pts) - PASSED
+test06 (1.25 pts) - PASSED
+test07 (1.25 pts) - PASSED
+test08 (1.25 pts) - PASSED
+test09 (1.25 pts) - PASSED
+test10 (1.25 pts) - PASSED
+test11 (0.75 pts) - PASSED
+test12 (0.75 pts) - PASSED
+test13 (0.75 pts) - PASSED
+test14 (0.75 pts) - PASSED
+test15 (0.75 pts) - PASSED
+test16 (0.75 pts) - PASSED
+test17 (0.75 pts) - PASSED
+test18 (0.75 pts) - PASSED
+test19 (0.75 pts) - PASSED
+test20 (0.75 pts) - PASSED
+test21 (1.00 pts) - PASSED
+test22 (1.00 pts) - PASSED
+test23 (1.00 pts) - PASSED
+test24 (1.00 pts) - PASSED
+test25 (1.00 pts) - PASSED
+test26 (3.00 pts) - PASSED
+test27 (3.00 pts) - PASSED
+test28 (3.00 pts) - PASSED
+test29 (3.00 pts) - PASSED
+test30 (3.00 pts) - PASSED
+test31 (1.00 pts) - FAILED - see diff in tests/diff/test31.diff
+test32 (1.00 pts) - FAILED - see diff in tests/diff/test32.diff
+test33 (1.00 pts) - FAILED - see diff in tests/diff/test33.diff
+test34 (1.00 pts) - FAILED - see diff in tests/diff/test34.diff
+test35 (1.00 pts) - FAILED - see diff in tests/diff/test35.diff
+test36 (1.00 pts) - FAILED - see diff in tests/diff/test36.diff
+test37 (1.00 pts) - FAILED - see diff in tests/diff/test37.diff
+test38 (1.00 pts) - FAILED - see diff in tests/diff/test38.diff
+test39 (1.00 pts) - FAILED - see diff in tests/diff/test39.diff
+test40 (1.00 pts) - FAILED - see diff in tests/diff/test40.diff
+test41 (1.25 pts) - PASSED
+test42 (1.25 pts) - PASSED
+test43 (1.25 pts) - PASSED
+test44 (1.25 pts) - PASSED
+test45 (1.25 pts) - PASSED
+test46 (1.25 pts) - PASSED
+test47 (1.25 pts) - PASSED
+test48 (1.25 pts) - PASSED
+test49 (1.25 pts) - PASSED
+test50 (1.25 pts) - PASSED
+test51 (0.75 pts) - PASSED
+test52 (0.75 pts) - PASSED
+test53 (0.75 pts) - PASSED
+test54 (0.75 pts) - PASSED
+test55 (0.75 pts) - PASSED
+test56 (0.75 pts) - PASSED
+test57 (0.75 pts) - PASSED
+test58 (0.75 pts) - PASSED
+test59 (0.75 pts) - PASSED
+test60 (0.75 pts) - PASSED
+test61 (1.00 pts) - PASSED
+test62 (1.00 pts) - PASSED
+test63 (1.00 pts) - PASSED
+test64 (1.00 pts) - PASSED
+test65 (1.00 pts) - PASSED
+test66 (3.00 pts) - PASSED
+test67 (3.00 pts) - PASSED
+test68 (3.00 pts) - PASSED
+test69 (3.00 pts) - PASSED
+test70 (3.00 pts) - PASSED
+test71 (1.00 pts) - FAILED - see diff in tests/diff/test71.diff
+test72 (1.00 pts) - FAILED - see diff in tests/diff/test72.diff
+test73 (1.00 pts) - FAILED - see diff in tests/diff/test73.diff
+test74 (1.00 pts) - FAILED - see diff in tests/diff/test74.diff
+test75 (1.00 pts) - FAILED - see diff in tests/diff/test75.diff
+test76 (1.00 pts) - FAILED - see diff in tests/diff/test76.diff
+test77 (1.00 pts) - FAILED - see diff in tests/diff/test77.diff
+test78 (1.00 pts) - FAILED - see diff in tests/diff/test78.diff
+test79 (1.00 pts) - FAILED - see diff in tests/diff/test79.diff
+test80 (1.00 pts) - FAILED - see diff in tests/diff/test80.diff
+More than 10 tests passed - +10 pts (PRINT function)
+Score: 100.00 / 120.00

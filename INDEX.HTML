@@ -1,0 +1,180 @@
+REZOLVARE TEST:
+
+<!DOCTYPE html>
+	<html lang="ro">
+	<head>
+	<meta charset="UTF-8" />
+	<title>TNB - Teatrul Național București</title>
+	<style>
+	body {
+	font-family: Arial, sans-serif;
+	background: #f3f3f3;
+	margin: 0; padding: 0;
+	}
+	.header {
+	background: #fff;
+	padding: 15px 20px;
+	border-bottom: 2px solid #ccc;
+	display: flex;
+	justify-content: center;
+	}
+	.menu {
+	display: flex;
+	gap: 20px;
+	}
+	.menu a {
+	color: #222;
+	font-weight: bold;
+	text-decoration: none;
+	}
+	.images-row {
+	display: flex;
+	width: 100vw;
+	margin-left: calc(-50vw + 50%);
+	}
+	.images-row img {
+	width: 50%;
+	max-height: 250px;
+	object-fit: cover;
+	transition: opacity 0.3s ease;
+	display: block;
+	}
+	.images-row img:first-child:hover {
+	opacity: 0.6;
+	}
+	.images-row img:first-child:hover + img {
+	opacity: 0.8;
+	}
+	.search-box {
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px 20px;
+	gap: 5px;
+	box-sizing: border-box;
+	}
+	.search-box input {
+	padding: 5px 8px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	font-size: 14px;
+	width: 200px;
+	}
+	.search-box button {
+	padding: 5px 12px;
+	background: #333;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 14px;
+	}
+	.main {
+	display: flex;
+	padding: 20px;
+	}
+	.sidebar {
+	width: 180px;
+	margin-right: 30px;
+	}
+	.sidebar .btn {
+	display: block;
+	background: #b0b0b0;
+	color: white;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	}
+	.repertoriu {
+	flex: 1;
+	display: flex;
+	gap: 15px;
+	}
+	.sala {
+	background: #b0b0b0;
+	color: white;
+	padding: 15px;
+	border-radius: 7px;
+	width: 200px;
+	}
+	.sala h3 {
+	margin-top: 0;
+	}
+	.sala ul {
+	padding-left: 18px;
+	margin: 0;
+	}
+	</style>
+	</head>
+	<body>
+	<div class="header">
+	<nav class="menu">
+	<a href="#">Ce se joacă</a>
+
+	<a href="#">Despre TNB</a>
+
+	<a href="#">Pentru presă</a>
+
+	<a href="#">Istoric</a>
+
+	<a href="#">Prietenii TNB</a>
+
+	<a href="#">Centrul Ion Sava</a>
+
+	</nav>
+	</div>
+	
+	<div class="images-row">
+	<img src="teatru1.jpg" alt="Teatru 1" />
+
+	<img src="teatru2.jpg" alt="Teatru 2" />
+
+	</div>
+	
+	<div class="search-box">
+	<input type="text" placeholder="Caută" />
+	<button>Caută</button>
+	</div>
+	
+	<div class="main">
+	<aside class="sidebar">
+	<a class="btn" href="#">Repertoriu</a>
+
+	<a class="btn" href="#">Conferințele TNB</a>
+	</aside>
+	<section class="repertoriu">
+	<div class="sala">
+	<h3>Sala Mare</h3>
+	<ul>
+	<li>Burghezul Gentilom</li>
+	<li>Comedia norilor</li>
+	<li>Dineu cu proști</li>
+	<li>Don Quijote</li>
+	<li>Eduard al III-lea</li>
+	<li>Ivan Turbincă</li>
+	<li>Molto, gran impressione</li>
+	<li>S-a sfârșit cum a început</li>
+	<li>Școala jupânesei</li>
+	<li>Take, Ianke și Cadâr</li>
+	<li>Tragedia lui Carmen</li>
+	</ul>
+	</div>
+	<div class="sala">
+	<h3>Sala Amfiteatru</h3>
+	<ul>
+	<li>A patra soră</li>
+	<li>Comisia de tranziție</li>
+	<li>Despre olteni, cu dragoste</li>
+	<li>Domnișoara Nastasia</li>
+	<li>Furtuna de vârsta a treia</li>
+	<li>Molto, gran impressione</li>
+	<li>O scrisoare pierdută</li>
+	<li>Take, Ianke și Cadâr</li>
+	</ul>
+	</div>
+	</section>
+	</div>
+	</body>
+	</html>
